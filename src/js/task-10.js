@@ -10,26 +10,23 @@ function onCreateBtnAmountOfBoxes() {
  const amount = Number(numberInput.value);
 
  if (!amount) {
-  console.log("Кількість має бути більше 0");
+  alert("Кількість має бути більше 0");
   return;
  }
-
  createBoxes(amount);
 }
 
+let size = 30;
+
 function createBoxes(amount) {
- const boxes = [];
+ let boxes = "";
+
  for (let i = 1; i <= amount; i += 1) {
-  const boxEl = document.createElement("div");
-  boxEl.style.width = "30px";
-  boxEl.style.width += "10px";
-  boxEl.style.height = "30px";
-  boxEl.style.height += "10px";
-  boxEl.style.backgroundColor = `${getRandomHexColor()}`;
-  console.log(boxEl);
-  boxes.push(boxEl);
+  boxes += `<div style="width:${size}px; height:${size}px; background-color:${getRandomHexColor()}"></div>`;
+  size += 10;
  }
- boxesEl.append(...boxes);
+
+ boxesEl.insertAdjacentHTML("beforeend", boxes);
 }
 
 function getRandomHexColor() {
